@@ -32,7 +32,6 @@ export default function TypingGameProvider({
   const [userInput, setUserInput] = useState("");
   const [startTime, setStartTime] = useState<number | null>(null);
   const [isFinished, setIsFinished] = useState(false);
-
   const { timeLeft, start, stop, reset, isTimeRunning } = useTimer(30);
 
   const pickSnippet = () =>

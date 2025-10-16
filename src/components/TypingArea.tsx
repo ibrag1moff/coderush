@@ -4,6 +4,7 @@ import "prismjs/themes/prism-tomorrow.css";
 import { useEffect, useRef } from "react";
 import { useTypingGame } from "@/context/typingGameContext";
 import { GameOverModal } from "./GameOverModal";
+import { useCapsLock } from "@/hooks/useCapsLock";
 
 export const TypingArea = () => {
   const {
@@ -15,6 +16,18 @@ export const TypingArea = () => {
     text,
     userInput,
   } = useTypingGame();
+
+  const { isCapsLockOn, handleKeyEvent } = useCapsLock();
+
+  useEffect(() => {
+    window.addEventListener("keydown", handleKeyEvent);
+    window.addEventListener("keyup", handleKeyEvent);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyEvent);
+      window.removeEventListener("keyup", handleKeyEvent);
+    };
+  }, [handleKeyEvent]);
 
   const codeRef = useRef<HTMLElement>(null);
 
@@ -31,12 +44,12 @@ export const TypingArea = () => {
 
     if (!userInput[index]) return "text-gray-400";
 
-    return userInput[index] === char ? "text-green-400" : "text-red-400";
+    return userInput[index] === char ? "text-emerald-500" : "text-rose-500";
   };
 
   return (
     <div
-      className="border border-gray-700 rounded-md p-4 focus:outline-none"
+      className="border-2 border-neutral-700 rounded-md p-4 focus:outline-none"
       tabIndex={0}
       onKeyDown={(e) => handleKey(e.key)}
     >
@@ -74,7 +87,11 @@ export const TypingArea = () => {
         </pre>
       </div>
 
-      {isFinished && <GameOverModal />}
+      {isCapsLockOn && (
+        <div className="mt-2 text-yellow-400 text-sm">⚠️ Caps Lock is ON</div>
+      )}
+
+      <GameOverModal />
     </div>
   );
 };

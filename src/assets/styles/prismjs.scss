@@ -1,0 +1,32 @@
+code[class*="language-"],
+pre[class*="language-"] {
+  font-family: "Poppins", sans-serif;
+}
+
+/* Example overrides */
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: #999999; /* lighter comment color */
+}
+
+.token.keyword {
+  color: #f10404; /* pink for keywords */
+  font-weight: bold;
+}
+
+.token.string {
+  color: #50fa7b; /* green for strings */
+}
+
+.token.function {
+  color: #8be9fd; /* blue for functions */
+}
+
+/* Background color for code blocks */
+pre[class*="language-"] {
+  background: #282a36; /* dark background */
+  border-radius: 8px;
+  padding: 1rem;
+}

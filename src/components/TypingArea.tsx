@@ -5,6 +5,7 @@ import { useEffect, useRef } from "react";
 import { useTypingGame } from "@/context/typingGameContext";
 import { GameOverModal } from "./GameOverModal";
 import { useCapsLock } from "@/hooks/useCapsLock";
+import { Button } from "./Button";
 
 export const TypingArea = () => {
   const {
@@ -62,12 +63,7 @@ export const TypingArea = () => {
             : "💡 Start typing!"}
         </span>
 
-        <button
-          onClick={resetGame}
-          className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded-md text-sm cursor-pointer"
-        >
-          Reset Game
-        </button>
+        <Button onClick={resetGame}>Reset Game</Button>
       </div>
 
       <div className="relative">

@@ -3,6 +3,7 @@ import { useTypingGame } from "@/context/typingGameContext";
 import { GrClose } from "react-icons/gr";
 import { motion, AnimatePresence } from "framer-motion";
 import { useStats } from "@/hooks/useStats";
+import { Button } from "./Button";
 
 export const GameOverModal = () => {
   const { resetGame, userInput, isFinished } = useTypingGame();
@@ -50,18 +51,16 @@ export const GameOverModal = () => {
             </div>
 
             <div className="flex justify-end gap-3 pt-5">
-              <button
+              <Button
+                className="text-md tracking-[2px]"
                 onClick={resetGame}
-                className="bg-gray-500 hover:bg-gray-600 text-white px-3 py-2 rounded-md cursor-pointer tracking-[2px] transition"
+                secondaryStyle
               >
                 Retry
-              </button>
-              <button
-                onClick={resetGame}
-                className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-2 rounded-md cursor-pointer tracking-[2px] transition"
-              >
+              </Button>
+              <Button className="tex-md tracking-[2px]" onClick={resetGame}>
                 Next Example
-              </button>
+              </Button>
             </div>
           </motion.div>
         </motion.div>

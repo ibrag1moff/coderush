@@ -64,7 +64,7 @@ export const TypingArea = () => {
 
         <button
           onClick={resetGame}
-          className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded-md text-sm"
+          className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded-md text-sm cursor-pointer"
         >
           Reset Game
         </button>

@@ -1,6 +1,8 @@
 "use client";
 import Image from "next/image";
 import { useAppSelector } from "@/hooks/redux";
+import { ProfileItem } from "@/components/ProfileItem";
+import { StatItem } from "@/components/StatItem";
 
 export const UserProfile = () => {
   const { user } = useAppSelector((state) => state.auth);
@@ -74,19 +76,3 @@ export const UserProfile = () => {
     </div>
   );
 };
-
-/* ---------- Small components ---------- */
-
-const ProfileItem = ({ label, value }: { label: string; value: string }) => (
-  <div>
-    <p className="text-xs uppercase tracking-wide text-neutral-500">{label}</p>
-    <p className="mt-1 text-sm text-neutral-200 break-all">{value}</p>
-  </div>
-);
-
-const StatItem = ({ label, value }: { label: string; value: string }) => (
-  <div className="rounded-lg bg-neutral-800 p-4 text-center">
-    <p className="text-2xl font-semibold text-indigo-400">{value}</p>
-    <p className="mt-1 text-xs uppercase text-neutral-400">{label}</p>
-  </div>
-);

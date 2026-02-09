@@ -3,7 +3,8 @@ import { Poppins } from "next/font/google";
 import "./globals.scss";
 import "@/assets/styles/prismjs.scss";
 import { ReactNode } from "react";
-import TypingGameProvider from "../context/typingGameContext";
+import Providers from "@/app/providers";
+import { Header } from "@/components/Header";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -23,13 +24,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <TypingGameProvider>
-        <body
-          className={`${poppins.variable} antialiased bg-neutral-800 text-gray-100`}
-        >
+      <body
+        className={`${poppins.variable} antialiased bg-neutral-800 text-gray-100`}
+      >
+        <Providers>
+          <Header />
           {children}
-        </body>
-      </TypingGameProvider>
+        </Providers>
+      </body>
     </html>
   );
 }

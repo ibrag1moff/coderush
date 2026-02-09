@@ -13,8 +13,12 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "CodeRush",
-  description: "CodeRush - a simple typing game.",
+  title: {
+    default: "Coderush | A simple code typing game",
+    template: "%s | CodeRush",
+  },
+  description:
+    "CodeRush — a code typing game that helps you improve your programming speed and accuracy.",
 };
 
 export default function RootLayout({

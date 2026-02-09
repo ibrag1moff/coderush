@@ -28,7 +28,7 @@ export const Header = () => {
               {/* Logout */}
               <button
                 onClick={handleLogout}
-                className="flex items-center gap-1 rounded-md px-2 py-1 text-sm text-neutral-400 hover:text-indigo-400 transition"
+                className="flex items-center gap-1 rounded-md px-2 py-1 text-sm text-neutral-400 hover:text-indigo-400 cursor-pointer transition"
               >
                 <FiLogOut size={18} />
                 <span className="hidden sm:inline">Logout</span>

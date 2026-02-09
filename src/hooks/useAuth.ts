@@ -46,7 +46,10 @@ export const useAuth = () => {
           id: user.uid,
           displayName: user.displayName,
           email: user.email,
-          metadata: user.metadata,
+          metadata: {
+            creationTime: user.metadata.creationTime!,
+            lastSignInTime: user.metadata.lastSignInTime!,
+          },
           phoneNumber: user.phoneNumber,
           photoUrl: user.photoURL,
         }),
@@ -89,7 +92,10 @@ export const useAuth = () => {
           id: user.uid,
           displayName: user.displayName,
           email: user.email,
-          metadata: user.metadata,
+          metadata: {
+            creationTime: user.metadata.creationTime!,
+            lastSignInTime: user.metadata.lastSignInTime!,
+          },
           phoneNumber: user.phoneNumber,
           photoUrl: user.photoURL,
         }),

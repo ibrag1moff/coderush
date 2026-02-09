@@ -4,14 +4,15 @@ import { useAppSelector } from "@/hooks/redux";
 
 export const UserProfile = () => {
   const { user } = useAppSelector((state) => state.auth);
-  console.log(user);
+
+  if (!user) return null;
   return (
     <div className="mx-auto max-w-3xl px-4 py-10">
       {/* Header */}
       <div className="flex items-center gap-6">
         {/* Avatar */}
         <div className="relative h-24 w-24 overflow-hidden rounded-full bg-indigo-600 flex items-center justify-center text-3xl font-bold text-white">
-          {user?.photoUrl ? (
+          {user.photoUrl ? (
             <Image
               src={user.photoUrl}
               alt="User avatar"
@@ -19,16 +20,16 @@ export const UserProfile = () => {
               className="object-cover"
             />
           ) : (
-            (user?.displayName?.charAt(0).toUpperCase() ?? "U")
+            (user.displayName?.charAt(0).toUpperCase() ?? "U")
           )}
         </div>
 
         {/* Basic info */}
         <div>
           <h1 className="text-2xl font-semibold text-neutral-100">
-            {user?.displayName ?? "Anonymous typist"}
+            {user.displayName ?? "Anonymous typist"}
           </h1>
-          <p className="text-neutral-400">{user?.email}</p>
+          <p className="text-neutral-400">{user.email ?? "-"}</p>
         </div>
       </div>
 
@@ -37,24 +38,24 @@ export const UserProfile = () => {
 
       {/* Profile details */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-        <ProfileItem label="User ID" value={user?.id} />
+        <ProfileItem label="User ID" value={user.id} />
         <ProfileItem
           label="Account created"
           value={
-            user?.metadata?.creationTime
-              ? new Date(user?.metadata.creationTime).toLocaleDateString()
+            user.metadata?.creationTime
+              ? new Date(user.metadata.creationTime).toLocaleDateString()
               : "-"
           }
         />
         <ProfileItem
           label="Last login"
           value={
-            user?.metadata?.lastSignInTime
+            user.metadata?.lastSignInTime
               ? new Date(user.metadata.lastSignInTime).toLocaleDateString()
               : "-"
           }
         />
-        <ProfileItem label="Phone number" value={user?.phoneNumber ?? "-"} />
+        <ProfileItem label="Phone number" value={user.phoneNumber ?? "-"} />
       </div>
 
       {/* Typing stats placeholder */}
